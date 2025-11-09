@@ -1,17 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import Sidebar from "./sidebar";
+import Sidebar from "../../components/sidebar";
 import { ReactNode } from "react";
 
-export default function DashboardLayout({ children }: { children: ReactNode }) {
+export default function MainLayout({ children }: { children: ReactNode }) {
   const [isOpen, setIsOpen] = useState(true);
   const toggleSidebar = () => setIsOpen(!isOpen);
 
   return (
     <div className="flex h-screen">
       <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-      <main className="flex-1 bg-gray-100 p-6">{children}</main>
+      <main className="flex-1 bg-gray-100 p-6 overflow-y-auto">{children}</main>
     </div>
   );
 }
