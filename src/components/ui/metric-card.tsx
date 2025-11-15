@@ -38,16 +38,18 @@ export function MetricCard({
   const Icon = iconMap[icon];
 
   return (
-    <Card>
-      <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
-        <CardTitle className="text-sm">{title}</CardTitle>
-        <div className={`${iconBgColor} p-3 rounded-lg`}>
-          <Icon className={`size-5 ${iconColor}`} />
-        </div>
+    <Card className="gap-0">
+      <CardHeader className="flex flex-row items-center justify-between">
+        <CardTitle className="text-sm text-gray-500">{title}</CardTitle>
       </CardHeader>
       <CardContent>
-        <div>{value}</div>
-        <p className={`text-xs mt-1 font-bold ${iconColor}`}>
+        <div className="flex items-center justify-between">
+          <div className="text-sm">{value}</div>
+          <div className={`${iconBgColor} p-3 rounded-lg`}>
+            <Icon className={`size-5 ${iconColor}`} />
+          </div>
+        </div>
+        <p className={`text-xs ${iconColor}`}>
           {change && changeType && (
             <span
               className={
