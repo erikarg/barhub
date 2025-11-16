@@ -1,29 +1,20 @@
 import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { staff, StaffMember } from "@/mocks/staff";
-import { Badge, Clock, DollarSign, Star } from "lucide-react";
+import { Clock, DollarSign, Star } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { PageHeader } from "@/components/page-header";
+import { formatCurrency } from "@/lib/utils";
 
 export default function StaffPage() {
   const getStatusBadge = (status: StaffMember["status"]) => {
     switch (status) {
       case "active":
-        return (
-          <Badge className="bg-green-100 text-green-800 hover:bg-green-100">
-            Active
-          </Badge>
-        );
+        return <Badge variant="success">Active</Badge>;
       case "break":
-        return (
-          <Badge className="bg-yellow-100 text-yellow-800 hover:bg-yellow-100">
-            On Break
-          </Badge>
-        );
+        return <Badge variant="warning">On Break</Badge>;
       case "off-duty":
-        return (
-          <Badge className="bg-gray-100 text-gray-800 hover:bg-gray-100">
-            Off Duty
-          </Badge>
-        );
+        return <Badge variant="default">Off Duty</Badge>;
       default:
         return null;
     }
@@ -42,15 +33,15 @@ export default function StaffPage() {
   };
 
   return (
-    <div className="p-4 lg:p-8 space-y-6">
-      <div>
-        <h2 className="text-gray-900">Staff Management</h2>
-        <p className="text-gray-500">Monitor team performance and schedules</p>
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        title="Staff Management"
+        description="Monitor team performance and schedules"
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600">
                 <Clock className="w-5 h-5" />
@@ -65,20 +56,20 @@ export default function StaffPage() {
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600">
                 <DollarSign className="w-5 h-5" />
               </div>
               <div>
                 <p className="text-gray-500">Total Sales Today</p>
-                <p className="text-gray-900">${totalSales.toFixed(2)}</p>
+                <p className="text-gray-900">{formatCurrency(totalSales)}</p>
               </div>
             </div>
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-yellow-50 rounded-lg flex items-center justify-center text-yellow-600">
                 <Star className="w-5 h-5" />
@@ -91,7 +82,7 @@ export default function StaffPage() {
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600">
                 <Clock className="w-5 h-5" />
@@ -146,13 +137,13 @@ export default function StaffPage() {
                                   {member.tables} tables
                                 </p>
                                 <p className="text-gray-500">
-                                  ${member.sales.toFixed(2)}
+                                  {formatCurrency(member.sales)}
                                 </p>
                               </>
                             )}
                           {member.role === "Bartender" && (
                             <p className="text-gray-900">
-                              ${member.sales.toFixed(2)}
+                              {formatCurrency(member.sales)}
                             </p>
                           )}
                           <div className="flex items-center gap-1 text-yellow-600">
@@ -197,7 +188,9 @@ export default function StaffPage() {
                     <p className="text-gray-500">{member.role}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-gray-900">${member.sales.toFixed(2)}</p>
+                    <p className="text-gray-900">
+                      {formatCurrency(member.sales)}
+                    </p>
                     <div className="flex items-center gap-1 text-yellow-600">
                       <Star className="w-3 h-3 fill-current" />
                       <span>{member.rating}</span>

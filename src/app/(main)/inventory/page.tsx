@@ -1,15 +1,10 @@
-import {
-  AlertCircle,
-  Badge,
-  Package,
-  TrendingDown,
-  TrendingUp,
-} from "lucide-react";
+import { AlertCircle, Package, TrendingDown, TrendingUp } from "lucide-react";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Progress } from "@/components/ui/progress";
-import { InventoryItem } from "@/mocks/inventory";
-import { inventoryItems } from "@/mocks/inventory";
+import { InventoryItem, inventoryItems } from "@/mocks/inventory";
+import { Badge, BadgeVariant } from "@/components/ui/badge";
+import { PageHeader } from "@/components/page-header";
 
 export default function InventoryPage() {
   const getStockStatus = (item: InventoryItem) => {
@@ -18,6 +13,12 @@ export default function InventoryPage() {
       return { label: "Low Stock", color: "red" };
     if (percentage < 50) return { label: "Medium Stock", color: "yellow" };
     return { label: "Good Stock", color: "green" };
+  };
+
+  const statusToVariant: Record<string, BadgeVariant> = {
+    red: "danger",
+    yellow: "warning",
+    green: "success",
   };
 
   const lowStockItems = inventoryItems.filter(
@@ -32,17 +33,15 @@ export default function InventoryPage() {
     ) / inventoryItems.length;
 
   return (
-    <div className="p-4 lg:p-8 space-y-6">
-      <div>
-        <h2 className="text-gray-900">Inventory Management</h2>
-        <p className="text-gray-500">
-          Monitor stock levels and manage supplies
-        </p>
-      </div>
+    <div className="space-y-6">
+      <PageHeader
+        title="Inventory Management"
+        description="Monitor stock levels and manage supplies"
+      />
 
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
         <Card>
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <Package className="w-8 h-8 text-blue-600" />
               <div>
@@ -53,7 +52,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
         <Card className="border-red-200 bg-red-50">
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <AlertCircle className="w-8 h-8 text-red-600" />
               <div>
@@ -64,7 +63,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <TrendingUp className="w-8 h-8 text-green-600" />
               <div>
@@ -75,7 +74,7 @@ export default function InventoryPage() {
           </CardContent>
         </Card>
         <Card>
-          <CardContent className="p-4">
+          <CardContent>
             <div className="flex items-center gap-3">
               <TrendingDown className="w-8 h-8 text-purple-600" />
               <div>
@@ -147,7 +146,9 @@ export default function InventoryPage() {
                         </p>
                       </td>
                       <td className="py-4 px-4">
-                        <Badge>{item.category}</Badge>
+                        <span className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-gray-100 text-gray-800 hover:bg-gray-100">
+                          {item.category}
+                        </span>
                       </td>
                       <td className="py-4 px-4">
                         <div className="space-y-1 min-w-[150px]">
@@ -163,15 +164,7 @@ export default function InventoryPage() {
                         </div>
                       </td>
                       <td className="py-4 px-4">
-                        <Badge
-                          className={
-                            status.color === "red"
-                              ? "bg-red-100 text-red-800 hover:bg-red-100"
-                              : status.color === "yellow"
-                              ? "bg-yellow-100 text-yellow-800 hover:bg-yellow-100"
-                              : "bg-green-100 text-green-800 hover:bg-green-100"
-                          }
-                        >
+                        <Badge variant={statusToVariant[status.color]}>
                           {status.label}
                         </Badge>
                       </td>

@@ -1,5 +1,6 @@
 "use client";
 
+import { PageHeader } from "@/components/page-header";
 import { ChartCard } from "@/components/ui/chart-card";
 import { MetricCard } from "@/components/ui/metric-card";
 import {
@@ -27,12 +28,10 @@ import {
 export default function DashboardPage() {
   return (
     <div className="space-y-6">
-      <div className="flex flex-col gap-2">
-        <h2 className="text-xl font-bold">Dashboard Overview</h2>
-        <p className="text-sm text-gray-500">
-          Real-time insights to help you manage your business efficiently.
-        </p>
-      </div>
+      <PageHeader
+        title="Dashboard Overview"
+        description="Real-time insights to help you manage your business efficiently."
+      />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {metricsData.map((metric) => (
           <MetricCard key={metric.title} {...metric} />

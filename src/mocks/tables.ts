@@ -20,7 +20,7 @@ export const tables: Table[] = [
     currentGuests: 2,
     orderTotal: 45.5,
     duration: "0:32",
-    server: "Sarah",
+    server: "Silvia",
   },
   { id: 2, number: "T2", seats: 4, status: "available", currentGuests: 0 },
   {
@@ -43,7 +43,7 @@ export const tables: Table[] = [
     currentGuests: 3,
     orderTotal: 87.5,
     duration: "0:45",
-    server: "Sarah",
+    server: "Silvia",
   },
   { id: 7, number: "T7", seats: 2, status: "available", currentGuests: 0 },
   {
