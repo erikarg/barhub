@@ -43,32 +43,23 @@ export default function InventoryPage() {
         <Card>
           <CardContent>
             <div className="flex items-center gap-3">
-              <Package className="w-8 h-8 text-blue-600" />
+              <Package className="w-8 h-8 text-primary" />
               <div>
-                <p className="text-gray-500">Total Items</p>
-                <p className="text-gray-900">{inventoryItems.length}</p>
+                <p className="text-sm text-muted-foreground">Total Items</p>
+                <p className="text-2xl font-semibold">{inventoryItems.length}</p>
               </div>
             </div>
           </CardContent>
         </Card>
-        <Card className="border-red-200 bg-red-50">
+        <Card className="border-rose-500/20 bg-rose-500/10">
           <CardContent>
             <div className="flex items-center gap-3">
-              <AlertCircle className="w-8 h-8 text-red-600" />
+              <AlertCircle className="w-8 h-8 text-rose-600" />
               <div>
-                <p className="text-gray-700">Low Stock</p>
-                <p className="text-gray-900">{lowStockItems.length} items</p>
-              </div>
-            </div>
-          </CardContent>
-        </Card>
-        <Card>
-          <CardContent>
-            <div className="flex items-center gap-3">
-              <TrendingUp className="w-8 h-8 text-green-600" />
-              <div>
-                <p className="text-gray-500">Categories</p>
-                <p className="text-gray-900">{totalCategories}</p>
+                <p className="text-sm text-muted-foreground">Low Stock</p>
+                <p className="text-2xl font-semibold">
+                  {lowStockItems.length} items
+                </p>
               </div>
             </div>
           </CardContent>
@@ -76,10 +67,23 @@ export default function InventoryPage() {
         <Card>
           <CardContent>
             <div className="flex items-center gap-3">
-              <TrendingDown className="w-8 h-8 text-purple-600" />
+              <TrendingUp className="w-8 h-8 text-emerald-600" />
               <div>
-                <p className="text-gray-500">Avg. Stock Level</p>
-                <p className="text-gray-900">{averageStock.toFixed(0)}%</p>
+                <p className="text-sm text-muted-foreground">Categories</p>
+                <p className="text-2xl font-semibold">{totalCategories}</p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+        <Card>
+          <CardContent>
+            <div className="flex items-center gap-3">
+              <TrendingDown className="w-8 h-8 text-violet-600" />
+              <div>
+                <p className="text-sm text-muted-foreground">Avg. Stock Level</p>
+                <p className="text-2xl font-semibold">
+                  {averageStock.toFixed(0)}%
+                </p>
               </div>
             </div>
           </CardContent>
@@ -87,18 +91,27 @@ export default function InventoryPage() {
       </div>
 
       {lowStockItems.length > 0 && (
-        <Card className="border-red-200 bg-red-50">
+        <Card className="border-rose-500/20 bg-rose-500/10">
           <CardHeader>
-            <CardTitle className="flex items-center gap-2 text-red-900">
+            <CardTitle className="flex items-center gap-2">
               <AlertCircle className="w-5 h-5" />
               Low Stock Alert
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <p className="text-red-800">
+            <p className="text-sm text-muted-foreground">
               {lowStockItems.length} item{lowStockItems.length > 1 ? "s" : ""}{" "}
               need restocking:{" "}
               {lowStockItems.map((item) => item.name).join(", ")}
+            </p>
+          </CardContent>
+        </Card>
+      )}
+      {lowStockItems.length === 0 && (
+        <Card>
+          <CardContent>
+            <p className="text-sm text-muted-foreground">
+              All stock levels look healthy. In a real app, this would reflect live inventory.
             </p>
           </CardContent>
         </Card>
@@ -108,7 +121,7 @@ export default function InventoryPage() {
         <CardHeader>
           <div className="flex items-center justify-between">
             <CardTitle>Inventory Items</CardTitle>
-            <Button className="bg-blue-600 hover:bg-blue-700">Add Item</Button>
+            <Button>Add Item</Button>
           </div>
         </CardHeader>
         <CardContent>
@@ -116,18 +129,22 @@ export default function InventoryPage() {
             <table className="w-full">
               <thead>
                 <tr className="border-b">
-                  <th className="text-left py-3 px-4 text-gray-700">Item</th>
-                  <th className="text-left py-3 px-4 text-gray-700">
+                  <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                    Item
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                     Category
                   </th>
-                  <th className="text-left py-3 px-4 text-gray-700">
+                  <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                     Stock Level
                   </th>
-                  <th className="text-left py-3 px-4 text-gray-700">Status</th>
-                  <th className="text-left py-3 px-4 text-gray-700">
+                  <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
+                    Status
+                  </th>
+                  <th className="text-left py-3 px-4 text-sm font-medium text-muted-foreground">
                     Supplier
                   </th>
-                  <th className="text-right py-3 px-4 text-gray-700">
+                  <th className="text-right py-3 px-4 text-sm font-medium text-muted-foreground">
                     Actions
                   </th>
                 </tr>
@@ -140,27 +157,31 @@ export default function InventoryPage() {
                   return (
                     <tr key={item.id} className="border-b last:border-0">
                       <td className="py-4 px-4">
-                        <p className="text-gray-900">{item.name}</p>
-                        <p className="text-gray-500">
+                        <p className="font-medium">{item.name}</p>
+                        <p className="text-sm text-muted-foreground">
                           Last restocked: {item.lastRestocked}
                         </p>
                       </td>
                       <td className="py-4 px-4">
-                        <span className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-gray-100 text-gray-800 hover:bg-gray-100">
+                        <span className="inline-flex items-center px-2 py-0.5 text-xs font-medium rounded bg-muted text-foreground">
                           {item.category}
                         </span>
                       </td>
                       <td className="py-4 px-4">
                         <div className="space-y-1 min-w-[150px]">
                           <div className="flex justify-between">
-                            <span className="text-gray-900">
+                            <span className="font-medium">
                               {item.quantity} {item.unit}
                             </span>
-                            <span className="text-gray-500">
+                            <span className="text-sm text-muted-foreground">
                               / {item.maxStock} {item.unit}
                             </span>
                           </div>
-                          <Progress value={percentage} className="h-2" />
+                          <Progress
+                            value={percentage}
+                            className="h-2"
+                            ariaLabel={`${item.name} stock level`}
+                          />
                         </div>
                       </td>
                       <td className="py-4 px-4">
@@ -168,7 +189,7 @@ export default function InventoryPage() {
                           {status.label}
                         </Badge>
                       </td>
-                      <td className="py-4 px-4 text-gray-600">
+                      <td className="py-4 px-4 text-sm text-muted-foreground">
                         {item.supplier}
                       </td>
                       <td className="py-4 px-4 text-right">

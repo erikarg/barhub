@@ -43,12 +43,12 @@ export default function StaffPage() {
         <Card>
           <CardContent>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-blue-50 rounded-lg flex items-center justify-center text-blue-600">
+              <div className="w-10 h-10 bg-primary/10 rounded-lg flex items-center justify-center text-primary">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-gray-500">Active Staff</p>
-                <p className="text-gray-900">
+                <p className="text-sm text-muted-foreground">Active Staff</p>
+                <p className="text-2xl font-semibold">
                   {activeStaff}/{staff.length}
                 </p>
               </div>
@@ -58,12 +58,12 @@ export default function StaffPage() {
         <Card>
           <CardContent>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-green-50 rounded-lg flex items-center justify-center text-green-600">
+              <div className="w-10 h-10 bg-emerald-500/10 rounded-lg flex items-center justify-center text-emerald-600">
                 <DollarSign className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-gray-500">Total Sales Today</p>
-                <p className="text-gray-900">{formatCurrency(totalSales)}</p>
+                <p className="text-sm text-muted-foreground">Total Sales Today</p>
+                <p className="text-2xl font-semibold">{formatCurrency(totalSales)}</p>
               </div>
             </div>
           </CardContent>
@@ -71,12 +71,12 @@ export default function StaffPage() {
         <Card>
           <CardContent>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-yellow-50 rounded-lg flex items-center justify-center text-yellow-600">
+              <div className="w-10 h-10 bg-amber-500/10 rounded-lg flex items-center justify-center text-amber-600">
                 <Star className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-gray-500">Avg. Rating</p>
-                <p className="text-gray-900">{averageRating.toFixed(1)}/5.0</p>
+                <p className="text-sm text-muted-foreground">Avg. Rating</p>
+                <p className="text-2xl font-semibold">{averageRating.toFixed(1)}/5.0</p>
               </div>
             </div>
           </CardContent>
@@ -84,12 +84,12 @@ export default function StaffPage() {
         <Card>
           <CardContent>
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 bg-purple-50 rounded-lg flex items-center justify-center text-purple-600">
+              <div className="w-10 h-10 bg-violet-500/10 rounded-lg flex items-center justify-center text-violet-600">
                 <Clock className="w-5 h-5" />
               </div>
               <div>
-                <p className="text-gray-500">On Break</p>
-                <p className="text-gray-900">
+                <p className="text-sm text-muted-foreground">On Break</p>
+                <p className="text-2xl font-semibold">
                   {staff.filter((s) => s.status === "break").length}
                 </p>
               </div>
@@ -114,35 +114,35 @@ export default function StaffPage() {
                         className="flex items-center gap-4 p-4 border rounded-lg"
                       >
                         <Avatar className="w-12 h-12">
-                          <AvatarFallback className="bg-blue-600 text-white">
+                          <AvatarFallback className="bg-primary text-primary-foreground">
                             {member.initials}
                           </AvatarFallback>
                         </Avatar>
 
                         <div className="flex-1 min-w-0">
                           <div className="flex items-center gap-2">
-                            <p className="text-gray-900 truncate">
+                            <p className="font-medium truncate">
                               {member.name}
                             </p>
                             {getStatusBadge(member.status)}
                           </div>
-                          <p className="text-gray-500">{member.shift}</p>
+                          <p className="text-sm text-muted-foreground">{member.shift}</p>
                         </div>
 
                         <div className="text-right space-y-1">
                           {member.role === "Server" &&
                             member.status === "active" && (
                               <>
-                                <p className="text-gray-900">
+                                <p className="font-medium">
                                   {member.tables} tables
                                 </p>
-                                <p className="text-gray-500">
+                                <p className="text-sm text-muted-foreground">
                                   {formatCurrency(member.sales)}
                                 </p>
                               </>
                             )}
                           {member.role === "Bartender" && (
-                            <p className="text-gray-900">
+                            <p className="font-medium">
                               {formatCurrency(member.sales)}
                             </p>
                           )}
@@ -173,22 +173,22 @@ export default function StaffPage() {
               .map((member, index) => (
                 <div
                   key={member.id}
-                  className="flex items-center gap-4 p-3 bg-gray-50 rounded-lg"
+                  className="flex items-center gap-4 p-3 bg-muted rounded-lg"
                 >
-                  <div className="w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center">
+                  <div className="w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center">
                     {index + 1}
                   </div>
                   <Avatar className="w-10 h-10">
-                    <AvatarFallback className="bg-gray-300 text-gray-700">
+                    <AvatarFallback className="bg-background text-muted-foreground border">
                       {member.initials}
                     </AvatarFallback>
                   </Avatar>
                   <div className="flex-1">
-                    <p className="text-gray-900">{member.name}</p>
-                    <p className="text-gray-500">{member.role}</p>
+                    <p className="font-medium">{member.name}</p>
+                    <p className="text-sm text-muted-foreground">{member.role}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-gray-900">
+                    <p className="font-medium">
                       {formatCurrency(member.sales)}
                     </p>
                     <div className="flex items-center gap-1 text-yellow-600">

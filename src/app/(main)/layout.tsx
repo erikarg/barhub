@@ -1,17 +1,6 @@
-"use client";
-
-import { useState } from "react";
-import Sidebar from "../../components/sidebar";
 import { ReactNode } from "react";
+import { MainShell } from "@/components/main-shell";
 
 export default function MainLayout({ children }: { children: ReactNode }) {
-  const [isOpen, setIsOpen] = useState(true);
-  const toggleSidebar = () => setIsOpen(!isOpen);
-
-  return (
-    <div className="flex h-screen">
-      <Sidebar isOpen={isOpen} toggleSidebar={toggleSidebar} />
-      <main className="flex-1 bg-gray-100 p-6 overflow-y-auto">{children}</main>
-    </div>
-  );
+  return <MainShell>{children}</MainShell>;
 }

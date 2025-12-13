@@ -30,7 +30,6 @@ export function Badge({
 }: BadgeProps) {
   return (
     <span
-      role="status"
       className={cn(
         "inline-flex items-center gap-1 px-2 py-0.5 text-xs font-medium rounded w-fit whitespace-nowrap",
         VARIANT_CLASSES[variant],

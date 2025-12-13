@@ -1,36 +1,75 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# BarHub
 
-## Getting Started
+BarHub is a **front-end-only restaurant manager demo** built with **Next.js (App Router) + TypeScript + Tailwind v4 + shadcn/ui**. It’s designed to be portfolio-friendly: clean UI, accessible navigation, responsive layout, and “demo auth” gating for realism.
 
-First, run the development server:
+## What this demo includes
+- **Dashboard**: KPI cards + charts (client-only charts to keep the rest server-rendered).
+- **Tables**: seat/clear tables (local state + persistence).
+- **Orders**: progress orders through statuses (local state + persistence).
+- **Inventory**: stock table + progress bars + empty/alert states.
+- **Staff**: grouped staff overview.
+- **Demo auth**: route guard via cookie + localStorage session (no backend).
+
+## Demo auth (important)
+This project intentionally has **no backend**. “Sign in / Create account” stores a demo session locally and sets a simple cookie to gate routes.
+
+- **Login route**: `/login`
+- **Register route**: `/register` (redirects to `/login?mode=register`)
+- **Protected routes**: `/dashboard`, `/tables`, `/orders`, `/inventory`, `/staff`
+
+## Routes
+- `/` → redirects to `/dashboard`
+- `/login` (public)
+- `/register` (public, redirect helper)
+- `/dashboard` (protected)
+- `/tables` (protected)
+- `/orders` (protected)
+- `/inventory` (protected)
+- `/staff` (protected)
+
+## Screenshots (add these for your portfolio)
+Create a `public/screenshots/` folder and add:
+- `public/screenshots/dashboard.png`
+- `public/screenshots/tables.png`
+- `public/screenshots/orders.png`
+- `public/screenshots/mobile-nav.png`
+- `public/screenshots/login.png`
+
+Then embed them here:
+
+![Dashboard](public/screenshots/dashboard.png)
+![Tables](public/screenshots/tables.png)
+![Orders](public/screenshots/orders.png)
+![Mobile Nav](public/screenshots/mobile-nav.png)
+![Login](public/screenshots/login.png)
+
+## Getting started
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
+pnpm install
 pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build & checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+pnpm lint
+pnpm exec tsc --noEmit
+pnpm build
+pnpm start
+```
 
-## Learn More
+## Deploy (Vercel)
+1. Push this repo to GitHub.
+2. Import into Vercel.
+3. No env vars required.
 
-To learn more about Next.js, take a look at the following resources:
+After deploying, add the live link here:
+- **Live demo**: (add your Vercel URL)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Notes for reviewers
+- Charts load client-side and show a skeleton while loading.
+- Orders/Tables interactivity is **local-only** (persisted in `localStorage`), so the demo feels “alive” without a backend.
+- Theme toggle persists and respects system preference.
