@@ -31,8 +31,8 @@ This project intentionally has **no backend**. “Sign in / Create account” st
 
 ## Screenshots
 
-![Dashboard](public/screenshots/dashboard.png)
 ![Login](public/screenshots/login.png)
+![Dashboard](public/screenshots/dashboard.png)
 ![Orders](public/screenshots/orders.png)
 ![Tables](public/screenshots/tables.png)
 ![Inventory](public/screenshots/inventory.png)
