@@ -32,7 +32,7 @@ export default function LoginPage() {
   }, [router, nextUrl]);
 
   return (
-    <div className="relative flex min-h-screen items-center justify-center bg-muted/30 p-6">
+    <div className="relative flex min-h-screen w-full items-center justify-center bg-muted/30 p-6">
       <div
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,oklch(0.8_0.12_260)/.25,transparent_60%)]"
