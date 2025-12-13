@@ -31,12 +31,12 @@ This project intentionally has **no backend**. “Sign in / Create account” st
 
 ## Screenshots
 
-![Dashboard](public/screenshots/dashboard.jpeg)
-![Login](public/screenshots/login.jpeg)
-![Orders](public/screenshots/orders.jpeg)
-![Tables](public/screenshots/tables.jpeg)
-![Inventory](public/screenshots/inventory.jpeg)
-![Staff](public/screenshots/staff.jpeg)
+![Dashboard](public/screenshots/dashboard.png)
+![Login](public/screenshots/login.png)
+![Orders](public/screenshots/orders.png)
+![Tables](public/screenshots/tables.png)
+![Inventory](public/screenshots/inventory.png)
+![Staff](public/screenshots/staff.png)
 
 ## Getting started
 
