@@ -52,6 +52,7 @@ Open `http://localhost:3000`.
 ```bash
 pnpm lint
 pnpm exec tsc --noEmit
+pnpm test:run
 pnpm build
 pnpm start
 ```
