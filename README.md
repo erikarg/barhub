@@ -61,3 +61,7 @@ pnpm start
 - Charts load client-side and show a skeleton while loading.
 - Orders/Tables interactivity is **local-only** (persisted in `localStorage`), so the demo feels “alive” without a backend.
 - Theme toggle persists and respects system preference.
+
+## License
+
+MIT — see [LICENSE](LICENSE).
